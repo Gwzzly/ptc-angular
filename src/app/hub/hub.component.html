@@ -13,7 +13,9 @@ Central Hub<br/>
 <div *ngFor="let appareilLed of appareilLeds; let i = index">
     <app-appareil id="appareil-{{i}}"
         [ngClass]="i > 0 ? 'custom-class-sup' : ''"
-        [electricity]="elec"
         [(led)]="appareilLeds[i]"
     ></app-appareil>
 </div>
+
+
+<a [routerLink]="['/test']">Direction le test</a>
