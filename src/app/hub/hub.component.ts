@@ -8,7 +8,11 @@ import { Component } from '@angular/core';
 export class HubComponent {
     public elec: boolean;
 
+    public appareilLeds: boolean[];
+
     constructor() {
         this.elec = true;
+
+        this.appareilLeds = [false, false];
     }
 }

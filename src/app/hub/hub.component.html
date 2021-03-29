@@ -1,3 +1,19 @@
 Central Hub<br/>
 
-<app-appareil [electricity]="elec"></app-appareil>
+<div *ngIf="appareilLeds[0] === true; else led1Off">
+    {{'led N° 1:' + appareilLeds[0]}}
+</div>
+<ng-template #led1Off>
+    La led N° 1 n'est pas allumée
+</ng-template>
+<div *ngIf="appareilLeds[1] === true">
+    {{'led N° 2:' + appareilLeds[1]}}
+</div>
+
+<div *ngFor="let appareilLed of appareilLeds; let i = index">
+    <app-appareil id="appareil-{{i}}"
+        [ngClass]="i > 0 ? 'custom-class-sup' : ''"
+        [electricity]="elec"
+        [(led)]="appareilLeds[i]"
+    ></app-appareil>
+</div>

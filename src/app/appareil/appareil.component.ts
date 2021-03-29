@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'app-appareil',
@@ -8,7 +8,19 @@ import { Component, Input } from '@angular/core';
 export class AppareilComponent {
     @Input()
     public electricity: boolean;
+    @Input()
+    public led: boolean;
+
+    @Output() public ledChange: EventEmitter<boolean>;
+
+    public switch: boolean;
 
     constructor() {
+        this.ledChange = new EventEmitter();
+    }
+
+    public onSwitch(): void {
+        this.led = !this.led;
+        this.ledChange.emit(this.led);
     }
 }
